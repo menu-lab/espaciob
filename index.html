@@ -96,7 +96,7 @@
       filter: grayscale(1);
     }
 
-    /* Botones interactivos transparentes con destello reactivo */
+    /* Botones táctiles con destello reactivo al toque */
     .touch-btn {
       position: absolute;
       display: block;
@@ -166,43 +166,42 @@
       border-radius: 0;
     }
 
-    /* Wincha de servicios en franja inferior */
+    /* Wincha de servicios transparente y pausada */
     .services-ticker {
       position: absolute;
-      top: 81.8%;
+      top: 83.8%;
       left: 0;
       width: 100%;
-      height: 4.8%;
+      height: 3.6%;
       display: flex;
       align-items: center;
       overflow: hidden;
       white-space: nowrap;
-      background: rgba(255, 255, 255, 0.88);
-      border-top: 1px solid rgba(212, 175, 55, 0.4);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-      backdrop-filter: blur(4px);
+      background: transparent;
+      pointer-events: none;
       z-index: 5;
     }
 
     .ticker-track {
       display: inline-flex;
-      animation: marquee 24s linear infinite;
+      animation: marquee 46s linear infinite;
     }
 
     .ticker-item {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: #2b2623;
-      padding: 0 16px;
+      color: #99731e;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+      padding: 0 20px;
       display: inline-flex;
       align-items: center;
     }
 
     .ticker-item span {
-      color: #c59b27;
-      margin-left: 16px;
+      color: #cda84b;
+      margin-left: 20px;
       font-size: 0.75rem;
     }
 
@@ -231,7 +230,7 @@
     <a href="https://wa.me/56946862122?text=Hola,%20quisiera%20consultar%20por%20una%20atenci%C3%B3n%20en%20Espacio%20B" target="_blank" rel="noopener" class="touch-btn btn-whatsapp" title="WhatsApp Directo"></a>
     <a href="https://www.instagram.com/salon_espaciob" target="_blank" rel="noopener" class="touch-btn btn-instagram" title="Visita nuestro perfil de Instagram"></a>
 
-    <!-- Wincha animada de servicios continuos -->
+    <!-- Wincha flotante sobre el mármol -->
     <div class="services-ticker">
       <div class="ticker-track">
         <div class="ticker-item">Balayage & Babylights <span>✦</span></div>
@@ -240,7 +239,7 @@
         <div class="ticker-item">Manicura Rusa & Acrílicas <span>✦</span></div>
         <div class="ticker-item">Lifting de Pestañas <span>✦</span></div>
         <div class="ticker-item">Tratamientos Hidratantes <span>✦</span></div>
-        <!-- Duplicado para loop fluido infinito -->
+        <!-- Duplicado para loop sin cortes -->
         <div class="ticker-item">Balayage & Babylights <span>✦</span></div>
         <div class="ticker-item">Corte Dama & Varón <span>✦</span></div>
         <div class="ticker-item">Botox Capilar & Alisados <span>✦</span></div>
