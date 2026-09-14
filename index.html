@@ -99,7 +99,7 @@
       filter: grayscale(1);
     }
 
-    /* Visor Fotográfico con base blanca camuflada */
+    /* Marco fotográfico con base blanca camuflada */
     .gallery-container {
       position: absolute;
       top: 20.8%;
@@ -121,36 +121,39 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center; /* Siempre centrada */
       opacity: 0;
-      transition: opacity 1.4s ease-in-out, transform 5.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+      transform: scale(1);
+      transition: opacity 1.3s ease-in-out, transform 5.2s ease-in-out;
+      transform-origin: center center;
     }
 
-    /* Paneo Vertical - De abajo hacia arriba con diagonal sutil */
-    .gallery-slide.active.motion-pan-vertical-up {
+    /* Paneo Vertical Suave */
+    .gallery-slide.active.motion-v-down {
       opacity: 1;
-      object-position: center bottom;
-      transform: scale(1.18) translateY(-9%) rotate(1deg);
+      transform: scale(1.1) translateY(4.5%);
     }
 
-    /* Paneo Vertical - De arriba hacia abajo con diagonal sutil */
-    .gallery-slide.active.motion-pan-vertical-down {
+    .gallery-slide.active.motion-v-up {
       opacity: 1;
-      object-position: center top;
-      transform: scale(1.18) translateY(9%) rotate(-1deg);
+      transform: scale(1.1) translateY(-4.5%);
     }
 
-    /* Paneo Horizontal - De izquierda a derecha */
-    .gallery-slide.active.motion-pan-h-right {
+    /* Paneo Horizontal Suave */
+    .gallery-slide.active.motion-h-right {
       opacity: 1;
-      object-position: left center;
-      transform: scale(1.16) translateX(7%) rotate(0.8deg);
+      transform: scale(1.1) translateX(4%);
     }
 
-    /* Paneo Horizontal - De derecha a izquierda */
-    .gallery-slide.active.motion-pan-h-left {
+    .gallery-slide.active.motion-h-left {
       opacity: 1;
-      object-position: right center;
-      transform: scale(1.16) translateX(-7%) rotate(-0.8deg);
+      transform: scale(1.1) translateX(-4%);
+    }
+
+    /* Diagonal Suave */
+    .gallery-slide.active.motion-diag {
+      opacity: 1;
+      transform: scale(1.12) translate(3%, -3%);
     }
 
     .touch-btn {
@@ -357,6 +360,7 @@
     });
 
     const slides = Array.from(gallery.children);
+    const motions = ['motion-v-down', 'motion-v-up', 'motion-h-right', 'motion-h-left', 'motion-diag'];
 
     function generateRandomSequence(length) {
       const arr = Array.from({ length }, (_, i) => i);
@@ -387,27 +391,16 @@
       }
 
       const activeImg = slides[activeIndex];
-      const isPortrait = activeImg.naturalHeight > activeImg.naturalWidth;
-
-      let motionClass = '';
-      if (isPortrait) {
-        const verticalMotions = ['motion-pan-vertical-up', 'motion-pan-vertical-down'];
-        motionClass = verticalMotions[Math.floor(Math.random() * verticalMotions.length)];
-      } else {
-        const horizontalMotions = ['motion-pan-h-right', 'motion-pan-h-left'];
-        motionClass = horizontalMotions[Math.floor(Math.random() * horizontalMotions.length)];
-      }
-
-      activeImg.className = `gallery-slide active ${motionClass}`;
+      const selectedMotion = motions[Math.floor(Math.random() * motions.length)];
+      activeImg.className = `gallery-slide active ${selectedMotion}`;
 
       previousIndex = activeIndex;
       step++;
     }
 
-    // Iniciar rotación tras asegurar carga inicial
     window.addEventListener('load', () => {
       nextSlide();
-      setInterval(nextSlide, 4800);
+      setInterval(nextSlide, 4400);
     });
   </script>
 </body>
