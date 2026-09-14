@@ -22,7 +22,6 @@
       font-family: sans-serif;
     }
 
-    /* Contenedor responsivo fijo en proporción 900x1700 */
     .app-container {
       position: relative;
       width: 100vw;
@@ -36,73 +35,41 @@
       box-shadow: 0 0 30px rgba(0,0,0,0.5);
     }
 
-    /* Brillo dorado interactivo común */
-    .shimmer-btn {
-      position: absolute;
-      display: block;
-      cursor: pointer;
-      text-decoration: none;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .shimmer-btn::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -150%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0) 30%,
-        rgba(218, 165, 32, 0.35) 50%,
-        rgba(255, 255, 255, 0) 70%
-      );
-      transform: rotate(25deg);
-      animation: flash-sheen 4.5s infinite ease-in-out;
-    }
-
-    @keyframes flash-sheen {
-      0%, 70% { left: -150%; }
-      100% { left: 150%; }
-    }
-
-    /* Destello sutil en el Logo superior */
+    /* Brillo ultra sutil en el logo superior */
     .logo-glow {
       position: absolute;
-      top: 1%;
-      left: 17.5%;
-      width: 65%;
-      height: 17%;
+      top: 1.5%;
+      left: 18%;
+      width: 64%;
+      height: 16%;
       pointer-events: none;
       overflow: hidden;
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
     .logo-glow::after {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
-      width: 60%;
+      left: -120%;
+      width: 35%;
       height: 100%;
       background: linear-gradient(
         90deg,
-        rgba(255, 255, 255, 0),
-        rgba(255, 215, 0, 0.3),
-        rgba(255, 255, 255, 0)
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 223, 128, 0.18) 50%,
+        rgba(255, 255, 255, 0) 100%
       );
-      transform: skewX(-25deg);
-      animation: logo-sweep 5s infinite 1s ease-in-out;
+      transform: skewX(-20deg);
+      animation: logo-sweep 7s infinite 2s ease-in-out;
     }
 
     @keyframes logo-sweep {
-      0%, 75% { left: -100%; }
+      0%, 75% { left: -120%; }
       100% { left: 160%; }
     }
 
-    /* Botón de Sonido (icono parlante superior izquierdo) */
+    /* Botón de Sonido superior izquierdo */
     #soundToggle {
       position: absolute;
       top: 2.2%;
@@ -114,19 +81,35 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 10;
     }
 
     .sound-badge {
       font-size: 1.1rem;
-      transition: transform 0.2s ease, opacity 0.2s;
+      transition: opacity 0.2s ease;
       opacity: 0.85;
     }
 
     .muted .sound-badge {
-      filter: grayscale(1) opacity(0.5);
+      filter: grayscale(1) opacity(0.45);
     }
 
-    /* Coordenadas precisas de la botonera */
+    /* Botones invisibles limpios (sin destellos ni brillos) */
+    .touch-btn {
+      position: absolute;
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 16px;
+      background: transparent;
+    }
+
+    .touch-btn:active {
+      background-color: rgba(212, 175, 55, 0.08);
+      transform: scale(0.99);
+    }
+
+    /* Posiciones sobre menugeneral.jpg */
     .btn-agendamiento {
       top: 43.5%;
       left: 7%;
@@ -155,42 +138,40 @@
       height: 11.2%;
       border-radius: 0;
     }
-
-    .shimmer-btn:active {
-      transform: scale(0.985);
-      background-color: rgba(212, 175, 55, 0.12);
-    }
   </style>
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Pista de audio -->
-    <audio id="bgMusic" src="sonido.mp3" loop preload="auto"></audio>
+    <!-- Pista de audio cargada dinámicamente -->
+    <audio id="bgMusic" loop preload="auto"></audio>
 
-    <!-- Destello superior sobre el logo -->
     <div class="logo-glow"></div>
 
-    <!-- 1. Botón de Audio Interactivo -->
     <div id="soundToggle" class="muted" title="Activar/Desactivar Sonido">
       <span class="sound-badge">🔇</span>
     </div>
 
-    <!-- 2. Botón Agendamiento (AgendaPro) -->
-    <a href="https://agendapro.com/site/cl/espaciob" target="_blank" rel="noopener" class="shimmer-btn btn-agendamiento" title="Reserva tu Cita Online"></a>
+    <!-- 1. Agendamiento -->
+    <a href="https://agendapro.com/site/cl/espaciob/553829" target="_blank" rel="noopener" class="touch-btn btn-agendamiento" title="Reserva tu Cita Online"></a>
 
-    <!-- 3. Botón WhatsApp -->
-    <a href="https://wa.me/56946862122?text=Hola,%20quisiera%20consultar%20por%20una%20atención%20en%20Espacio%20B" target="_blank" rel="noopener" class="shimmer-btn btn-whatsapp" title="WhatsApp Directo"></a>
+    <!-- 2. WhatsApp -->
+    <a href="https://wa.me/56946862122?text=Hola,%20quisiera%20consultar%20por%20una%20atenci%C3%B3n%20en%20Espacio%20B" target="_blank" rel="noopener" class="touch-btn btn-whatsapp" title="WhatsApp Directo"></a>
 
-    <!-- 4. Botón Instagram -->
-    <a href="https://www.instagram.com/salon_espaciob" target="_blank" rel="noopener" class="shimmer-btn btn-instagram" title="Visita nuestro perfil de Instagram"></a>
+    <!-- 3. Instagram -->
+    <a href="https://www.instagram.com/salon_espaciob" target="_blank" rel="noopener" class="touch-btn btn-instagram" title="Visita nuestro perfil de Instagram"></a>
 
-    <!-- 5. Botón Footer Geolocalización (Google Maps) -->
-    <a href="https://www.google.com/maps/search/?api=1&query=Av+Brasil+8018+local+2,+Renca" target="_blank" rel="noopener" class="shimmer-btn btn-maps" title="Cómo llegar a Espacio B"></a>
+    <!-- 4. Footer Dirección y Mapa -->
+    <a href="https://www.google.com/maps/search/?api=1&query=Av+Brasil+8018+local+2,+Renca" target="_blank" rel="noopener" class="touch-btn btn-maps" title="Cómo llegar a Espacio B"></a>
   </div>
 
   <script>
+    const playlist = ['sonido1.mp3', 'sonido2.mp3'];
+    const selectedTrack = playlist[Math.floor(Math.random() * playlist.length)];
+
     const audio = document.getElementById('bgMusic');
+    audio.src = selectedTrack;
+
     const soundToggle = document.getElementById('soundToggle');
     const badge = soundToggle.querySelector('.sound-badge');
 
