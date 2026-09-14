@@ -23,11 +23,10 @@
     body {
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Se pega arriba para no desplazar el footer */
+      align-items: flex-start;
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* Contenedor forzado al 100% del alto visible en móvil */
     .app-container {
       position: relative;
       height: 100vh;
@@ -41,7 +40,7 @@
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
     }
 
-    /* Brillo sutil continuo sobre el logotipo superior */
+    /* Brillo superior en logo */
     .logo-glow {
       position: absolute;
       top: 1.5%;
@@ -75,7 +74,7 @@
       100% { left: 160%; }
     }
 
-    /* Botón de Sonido (esquina superior izquierda) */
+    /* Botón de Sonido */
     #soundToggle {
       position: absolute;
       top: 2%;
@@ -102,7 +101,51 @@
       filter: grayscale(1);
     }
 
-    /* Botones interactivos con destello al toque */
+    /* Visor Fotográfico Adaptativo Dinámico */
+    .gallery-container {
+      position: absolute;
+      top: 20.8%;
+      left: 7%;
+      width: 86%;
+      height: 20%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid #d4af37;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.2);
+      background-color: #0d0d0d;
+      z-index: 8;
+    }
+
+    .gallery-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: opacity 1.1s ease-in-out, transform 4.5s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-origin: center center;
+    }
+
+    /* Variaciones de movimiento asignadas dinámicamente */
+    .gallery-slide.active.motion-zoom {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .gallery-slide.active.motion-diagonal {
+      opacity: 1;
+      transform: scale(1.06) translate(2%, -2%) rotate(1.2deg);
+    }
+
+    .gallery-slide.active.motion-pan-left {
+      opacity: 1;
+      transform: scale(1.06) translate(-2.5%, 1.5%) rotate(-1deg);
+    }
+
+    /* Botones táctiles */
     .touch-btn {
       position: absolute;
       display: block;
@@ -172,7 +215,7 @@
       border-radius: 0;
     }
 
-    /* Marquesina sin fondo (Barbería y Servicios) */
+    /* Marquesina sin fondo */
     .services-ticker {
       position: absolute;
       top: 83.8%;
@@ -224,11 +267,30 @@
 
     <div class="logo-glow"></div>
 
-    <!-- Botón de Audio -->
+    <!-- Botón de Audio con SVG dorado -->
     <div id="soundToggle" class="muted" title="Control de Sonido">
       <svg id="soundIcon" viewBox="0 0 24 24">
         <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
       </svg>
+    </div>
+
+    <!-- Visor de 15 Imágenes Dinámicas -->
+    <div class="gallery-container" id="gallery">
+      <img src="foto1.jpg" alt="Estudio 1" class="gallery-slide">
+      <img src="foto2.jpg" alt="Estudio 2" class="gallery-slide">
+      <img src="foto3.jpg" alt="Estudio 3" class="gallery-slide">
+      <img src="foto4.jpg" alt="Estudio 4" class="gallery-slide">
+      <img src="foto5.jpg" alt="Estudio 5" class="gallery-slide">
+      <img src="foto6.jpg" alt="Estudio 6" class="gallery-slide">
+      <img src="foto7.jpg" alt="Estudio 7" class="gallery-slide">
+      <img src="foto8.jpg" alt="Estudio 8" class="gallery-slide">
+      <img src="foto9.jpg" alt="Estudio 9" class="gallery-slide">
+      <img src="foto10.jpg" alt="Estudio 10" class="gallery-slide">
+      <img src="foto11.jpg" alt="Estudio 11" class="gallery-slide">
+      <img src="foto12.jpg" alt="Estudio 12" class="gallery-slide">
+      <img src="foto13.jpg" alt="Estudio 13" class="gallery-slide">
+      <img src="foto14.jpg" alt="Estudio 14" class="gallery-slide">
+      <img src="foto15.jpg" alt="Estudio 15" class="gallery-slide">
     </div>
 
     <!-- Botones táctiles -->
@@ -236,7 +298,7 @@
     <a href="https://wa.me/56946862122?text=Hola,%20quisiera%20consultar%20por%20una%20atenci%C3%B3n%20en%20Espacio%20B" target="_blank" rel="noopener" class="touch-btn btn-whatsapp" title="WhatsApp Directo"></a>
     <a href="https://www.instagram.com/salon_espaciob" target="_blank" rel="noopener" class="touch-btn btn-instagram" title="Visita nuestro perfil de Instagram"></a>
 
-    <!-- Marquesina continua -->
+    <!-- Marquesina de servicios -->
     <div class="services-ticker">
       <div class="ticker-track">
         <div class="ticker-item">Barbería Clásica & Moderna <span>✦</span></div>
@@ -246,7 +308,6 @@
         <div class="ticker-item">Tendencias & Estilo Propio <span>✦</span></div>
         <div class="ticker-item">Manicura Rusa & Acrílicas <span>✦</span></div>
         <div class="ticker-item">Lifting de Pestañas & Cejas <span>✦</span></div>
-        <!-- Duplicado -->
         <div class="ticker-item">Barbería Clásica & Moderna <span>✦</span></div>
         <div class="ticker-item">Balayage & Babylights <span>✦</span></div>
         <div class="ticker-item">Cortes Para Todas Las Edades <span>✦</span></div>
@@ -262,15 +323,14 @@
   </div>
 
   <script>
+    // Audio aleatorio
     const tracks = ['sonido1.mp3', 'sonido2.mp3'];
     const chosenTrack = tracks[Math.floor(Math.random() * tracks.length)];
-
     const audio = document.getElementById('bgMusic');
     audio.src = chosenTrack;
 
     const soundToggle = document.getElementById('soundToggle');
     const soundIcon = document.getElementById('soundIcon');
-
     const iconMuted = 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27l4.73 4.73H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z';
     const iconActive = 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z';
 
@@ -279,15 +339,59 @@
         audio.play().then(() => {
           soundToggle.classList.remove('muted');
           soundIcon.innerHTML = `<path d="${iconActive}"/>`;
-        }).catch(err => {
-          console.warn("Audio bloqueado:", err);
-        });
+        }).catch(err => console.warn("Audio bloqueado:", err));
       } else {
         audio.pause();
         soundToggle.classList.add('muted');
         soundIcon.innerHTML = `<path d="${iconMuted}"/>`;
       }
     });
+
+    // Motor Aleatorio de Imágenes y Transiciones Dinámicas
+    const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+    const motionEffects = ['motion-zoom', 'motion-diagonal', 'motion-pan-left'];
+
+    function generateRandomSequence(length) {
+      const arr = Array.from({ length }, (_, i) => i);
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    let sequence = generateRandomSequence(slides.length);
+    let step = 0;
+    let previousIndex = null;
+
+    function nextSlide() {
+      if (step >= sequence.length) {
+        sequence = generateRandomSequence(slides.length);
+        // Evitar que la primera de la nueva tanda sea igual a la última
+        if (sequence[0] === previousIndex && slides.length > 1) {
+          [sequence[0], sequence[1]] = [sequence[1], sequence[0]];
+        }
+        step = 0;
+      }
+
+      const activeIndex = sequence[step];
+
+      // Limpiar estado previo
+      if (previousIndex !== null) {
+        slides[previousIndex].className = 'gallery-slide';
+      }
+
+      // Asignar efecto de movimiento al azar (diagonal, zoom o paneo)
+      const randomMotion = motionEffects[Math.floor(Math.random() * motionEffects.length)];
+      slides[activeIndex].className = `gallery-slide active ${randomMotion}`;
+
+      previousIndex = activeIndex;
+      step++;
+    }
+
+    // Inicio inmediato y ciclo cada 3.4 segundos
+    nextSlide();
+    setInterval(nextSlide, 3400);
   </script>
 </body>
 </html>
