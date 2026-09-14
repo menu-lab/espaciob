@@ -129,7 +129,6 @@
       transform-origin: center center;
     }
 
-    /* Variaciones de movimiento asignadas dinámicamente */
     .gallery-slide.active.motion-zoom {
       opacity: 1;
       transform: scale(1.08);
@@ -274,24 +273,8 @@
       </svg>
     </div>
 
-    <!-- Visor de 15 Imágenes Dinámicas -->
-    <div class="gallery-container" id="gallery">
-      <img src="foto1.jpg" alt="Estudio 1" class="gallery-slide">
-      <img src="foto2.jpg" alt="Estudio 2" class="gallery-slide">
-      <img src="foto3.jpg" alt="Estudio 3" class="gallery-slide">
-      <img src="foto4.jpg" alt="Estudio 4" class="gallery-slide">
-      <img src="foto5.jpg" alt="Estudio 5" class="gallery-slide">
-      <img src="foto6.jpg" alt="Estudio 6" class="gallery-slide">
-      <img src="foto7.jpg" alt="Estudio 7" class="gallery-slide">
-      <img src="foto8.jpg" alt="Estudio 8" class="gallery-slide">
-      <img src="foto9.jpg" alt="Estudio 9" class="gallery-slide">
-      <img src="foto10.jpg" alt="Estudio 10" class="gallery-slide">
-      <img src="foto11.jpg" alt="Estudio 11" class="gallery-slide">
-      <img src="foto12.jpg" alt="Estudio 12" class="gallery-slide">
-      <img src="foto13.jpg" alt="Estudio 13" class="gallery-slide">
-      <img src="foto14.jpg" alt="Estudio 14" class="gallery-slide">
-      <img src="foto15.jpg" alt="Estudio 15" class="gallery-slide">
-    </div>
+    <!-- Contenedor del visor dinámico -->
+    <div class="gallery-container" id="gallery"></div>
 
     <!-- Botones táctiles -->
     <a href="https://agendapro.com/site/cl/espaciob/553829" target="_blank" rel="noopener" class="touch-btn btn-agendamiento" title="Reserva tu Cita Online"></a>
@@ -347,10 +330,38 @@
       }
     });
 
-    // Motor Aleatorio de Imágenes y Transiciones Dinámicas
-    const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+    // Mapeo exacto de los 15 archivos con sus formatos reales
+    const photoFiles = [
+      'foto1.jpeg',
+      'foto2.jpeg',
+      'foto3.jpeg',
+      'foto4.jpeg',
+      'foto5.jpeg',
+      'foto6.jpeg',
+      'foto7.jpeg.jpg',
+      'foto8.jfif',
+      'foto9.jfif',
+      'foto10.jfif',
+      'foto11.jfif',
+      'foto12.jfif',
+      'foto13.jfif',
+      'foto14.jfif',
+      'foto15.jfif'
+    ];
+
+    // Inyección dinámica de etiquetas <img>
+    const gallery = document.getElementById('gallery');
+    photoFiles.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = 'gallery-slide';
+      gallery.appendChild(img);
+    });
+
+    const slides = Array.from(gallery.children);
     const motionEffects = ['motion-zoom', 'motion-diagonal', 'motion-pan-left'];
 
+    // Algoritmo Fisher-Yates para barajar sin repetición contigua
     function generateRandomSequence(length) {
       const arr = Array.from({ length }, (_, i) => i);
       for (let i = arr.length - 1; i > 0; i--) {
@@ -367,7 +378,6 @@
     function nextSlide() {
       if (step >= sequence.length) {
         sequence = generateRandomSequence(slides.length);
-        // Evitar que la primera de la nueva tanda sea igual a la última
         if (sequence[0] === previousIndex && slides.length > 1) {
           [sequence[0], sequence[1]] = [sequence[1], sequence[0]];
         }
@@ -376,12 +386,10 @@
 
       const activeIndex = sequence[step];
 
-      // Limpiar estado previo
       if (previousIndex !== null) {
         slides[previousIndex].className = 'gallery-slide';
       }
 
-      // Asignar efecto de movimiento al azar (diagonal, zoom o paneo)
       const randomMotion = motionEffects[Math.floor(Math.random() * motionEffects.length)];
       slides[activeIndex].className = `gallery-slide active ${randomMotion}`;
 
@@ -389,7 +397,6 @@
       step++;
     }
 
-    // Inicio inmediato y ciclo cada 3.4 segundos
     nextSlide();
     setInterval(nextSlide, 3400);
   </script>
