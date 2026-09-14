@@ -35,7 +35,7 @@
       box-shadow: 0 0 30px rgba(0,0,0,0.5);
     }
 
-    /* Brillo tenue continuo en el logo superior */
+    /* Brillo sutil en el logo superior */
     .logo-glow {
       position: absolute;
       top: 1.5%;
@@ -96,7 +96,7 @@
       filter: grayscale(1);
     }
 
-    /* Botones táctiles con destello reactivo al toque */
+    /* Botones táctiles transparentes con destello reactivo */
     .touch-btn {
       position: absolute;
       display: block;
@@ -166,7 +166,7 @@
       border-radius: 0;
     }
 
-    /* Wincha de servicios transparente y pausada */
+    /* Marquesina sin fondo con servicios integrados de barbería */
     .services-ticker {
       position: absolute;
       top: 83.8%;
@@ -184,7 +184,7 @@
 
     .ticker-track {
       display: inline-flex;
-      animation: marquee 46s linear infinite;
+      animation: marquee 48s linear infinite;
     }
 
     .ticker-item {
@@ -194,15 +194,15 @@
       text-transform: uppercase;
       color: #99731e;
       text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
-      padding: 0 20px;
+      padding: 0 18px;
       display: inline-flex;
       align-items: center;
     }
 
     .ticker-item span {
       color: #cda84b;
-      margin-left: 20px;
-      font-size: 0.75rem;
+      margin-left: 18px;
+      font-size: 0.72rem;
     }
 
     @keyframes marquee {
@@ -230,22 +230,24 @@
     <a href="https://wa.me/56946862122?text=Hola,%20quisiera%20consultar%20por%20una%20atenci%C3%B3n%20en%20Espacio%20B" target="_blank" rel="noopener" class="touch-btn btn-whatsapp" title="WhatsApp Directo"></a>
     <a href="https://www.instagram.com/salon_espaciob" target="_blank" rel="noopener" class="touch-btn btn-instagram" title="Visita nuestro perfil de Instagram"></a>
 
-    <!-- Wincha flotante sobre el mármol -->
+    <!-- Marquesina que suma Barbería, Tendencias y Salón -->
     <div class="services-ticker">
       <div class="ticker-track">
+        <div class="ticker-item">Barbería Clásica & Moderna <span>✦</span></div>
         <div class="ticker-item">Balayage & Babylights <span>✦</span></div>
-        <div class="ticker-item">Corte Dama & Varón <span>✦</span></div>
+        <div class="ticker-item">Cortes Para Todas Las Edades <span>✦</span></div>
         <div class="ticker-item">Botox Capilar & Alisados <span>✦</span></div>
+        <div class="ticker-item">Tendencias & Estilo Propio <span>✦</span></div>
         <div class="ticker-item">Manicura Rusa & Acrílicas <span>✦</span></div>
-        <div class="ticker-item">Lifting de Pestañas <span>✦</span></div>
-        <div class="ticker-item">Tratamientos Hidratantes <span>✦</span></div>
-        <!-- Duplicado para loop sin cortes -->
+        <div class="ticker-item">Lifting de Pestañas & Cejas <span>✦</span></div>
+        <!-- Duplicado continuo para loop sin saltos -->
+        <div class="ticker-item">Barbería Clásica & Moderna <span>✦</span></div>
         <div class="ticker-item">Balayage & Babylights <span>✦</span></div>
-        <div class="ticker-item">Corte Dama & Varón <span>✦</span></div>
+        <div class="ticker-item">Cortes Para Todas Las Edades <span>✦</span></div>
         <div class="ticker-item">Botox Capilar & Alisados <span>✦</span></div>
+        <div class="ticker-item">Tendencias & Estilo Propio <span>✦</span></div>
         <div class="ticker-item">Manicura Rusa & Acrílicas <span>✦</span></div>
-        <div class="ticker-item">Lifting de Pestañas <span>✦</span></div>
-        <div class="ticker-item">Tratamientos Hidratantes <span>✦</span></div>
+        <div class="ticker-item">Lifting de Pestañas & Cejas <span>✦</span></div>
       </div>
     </div>
 
